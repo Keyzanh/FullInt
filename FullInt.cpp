@@ -17,7 +17,7 @@ FullInt::FullInt( unsigned long int nbr ) {
 
 FullInt::~FullInt() {}
 
-std::string FullInt::get() {
+std::string FullInt::get() const {
 
     return m_number;
 
@@ -104,5 +104,23 @@ bool FullInt::add( unsigned long int nbr ) {
 int FullInt::nbDigits() {
 
     return m_number.size();
+
+}
+
+void FullInt::operator+=( FullInt const& nb ) {
+
+    add( nb.get() );
+
+}
+
+void FullInt::operator+=( std::string const& nb ) {
+
+    add( nb );
+
+}
+
+void FullInt::operator+=( unsigned long int const& nb ) {
+
+    add( nb );
 
 }

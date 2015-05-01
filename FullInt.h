@@ -41,7 +41,7 @@ public:
      *
      * @return string   The number in string format
      */
-    std::string get();
+    std::string get () const;
     
     /**
      * Set the number to the given value
@@ -85,6 +85,27 @@ public:
      * @return int The number of digits of the number
      */
     int nbDigits();
+    
+    /**
+     * Overload for the operator +=
+     *
+     * @param FullInt
+     */
+    void operator+=( FullInt const& nb );
+    
+    /**
+     * Overload for the operator +=
+     *
+     * @param string
+     */
+    void operator+=( std::string const& nb );
+    
+    /**
+     * Overload for the operator +=
+     *
+     * @param unsigned long int
+     */
+    void operator+=( unsigned long int const& nb );
 
 private:
 

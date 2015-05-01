@@ -5,12 +5,14 @@ FullInt::FullInt() { set( "0" ); }
 
 FullInt::FullInt( std::string nbr ) { 
 
-    if( !set( nbr ) ) {
+    if( !set( nbr ) ) { set( "0" ); }
     
-        set( "0" );
-    
-    }
-    
+}
+
+FullInt::FullInt( unsigned long int nbr ) {
+
+    if( !set( nbr ) ) { set( "0" ); }
+
 }
 
 FullInt::~FullInt() {}
@@ -33,6 +35,14 @@ bool FullInt::set( std::string nbr ) {
     m_number = nbr;
     
     return true;
+
+}
+
+bool FullInt::set( unsigned long int nbr ) {
+
+    std::string nbStr = std::to_string( nbr );
+    
+    return set( nbStr );
 
 }
 
@@ -80,6 +90,14 @@ bool FullInt::add( std::string nbr ) {
     }
         
     return true;
+
+}
+
+bool FullInt::add( unsigned long int nbr ) {
+
+    std::string nbStr = std::to_string( nbr );
+    
+    return add( nbStr );
 
 }
 

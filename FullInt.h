@@ -25,6 +25,13 @@ public:
     FullInt( std::string nbr );
     
     /**
+     * Constructor : initialize the number to the given value (or 0 if fail)
+     *
+     * @param unsigned long int    The value to initialize the number
+     */
+    FullInt( unsigned long int nbr );
+    
+    /**
      * Destructor
      */
     ~FullInt();
@@ -46,6 +53,15 @@ public:
     bool set( std::string nbr );
     
     /**
+     * Set the number to given value
+     *
+     * @param unsigned long int   The new value of the number
+     *
+     * @return bool True if success, false otherwise
+     */
+    bool set( unsigned long int nbr );
+    
+    /**
      * Add a value to the number (sum operation)
      *
      * @param string    The number to add (sum)
@@ -53,6 +69,15 @@ public:
      * @return bool True if success, false otherwise
      */
     bool add( std::string nbr );
+    
+    /**
+     * Add a value to the number (sum operation)
+     *
+     * @param unsigned long int    The number to add (sum)
+     *
+     * @return bool True if success, false otherwise
+     */
+    bool add( unsigned long int nbr );
     
     /**
      * Return the number of digits of the number

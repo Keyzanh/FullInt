@@ -118,4 +118,44 @@ private:
 
 };
 
+/**
+ * Overload for the operator +
+ *
+ * @param FullInt
+ * @param FullInt
+ */
+FullInt operator+( FullInt const& nb1, FullInt const& nb2 );
+
+/**
+ * Overload for the operator +
+ *
+ * @param FullInt
+ * @param string
+ */
+FullInt operator+( FullInt const& nb1, std::string const& nb2 );
+
+/**
+ * Overload for the operator +
+ *
+ * @param string
+ * @param FullInt
+ */
+FullInt operator+( std::string const& nb1, FullInt const& nb2 );
+
+/**
+ * Overload for the operator +
+ *
+ * @param FullInt
+ * @param unsigned long int
+ */
+FullInt operator+( FullInt const& nb1, unsigned long int const& nb2 );
+
+/**
+ * Overload for the operator +
+ *
+ * @param unsigned long int
+ * @param FullInt
+ */
+FullInt operator+( unsigned long int const& nb1, FullInt const& nb2 );
+
 #endif

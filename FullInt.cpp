@@ -124,3 +124,43 @@ void FullInt::operator+=( unsigned long int const& nb ) {
     add( nb );
 
 }
+
+FullInt operator+( FullInt const& nb1, FullInt const& nb2 ) {
+
+    FullInt result( nb1 );
+    result += nb2;
+    return result;
+
+}
+
+FullInt operator+( FullInt const& nb1, std::string const& nb2 ) {
+
+    FullInt result( nb1 );
+    result += nb2;
+    return result;
+
+}
+
+FullInt operator+( std::string const& nb1, FullInt const& nb2 ) {
+
+    FullInt result( nb2 );
+    result += nb1;
+    return result;
+
+}
+
+FullInt operator+( FullInt const& nb1, unsigned long int const& nb2 ) {
+
+    FullInt result( nb1 );
+    result += nb2;
+    return result;
+
+}
+
+FullInt operator+( unsigned long int const& nb1, FullInt const& nb2 ) {
+
+    FullInt result( nb2 );
+    result += nb1;
+    return result;
+
+}

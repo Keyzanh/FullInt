@@ -46,6 +46,15 @@ public:
     /**
      * Set the number to the given value
      *
+     * @param FullInt    The new value of the number
+     *
+     * @return bool True if success, false otherwise
+     */
+    bool set( FullInt nbr );
+    
+    /**
+     * Set the number to the given value
+     *
      * @param string    The new value of the number
      *
      * @return bool True if success, false otherwise
@@ -60,6 +69,15 @@ public:
      * @return bool True if success, false otherwise
      */
     bool set( unsigned long int nbr );
+    
+    /**
+     * Add a value to the number (sum operation)
+     *
+     * @param FullInt    The number to add (sum)
+     *
+     * @return bool True if success, false otherwise
+     */
+    bool add( FullInt nbr );
     
     /**
      * Add a value to the number (sum operation)

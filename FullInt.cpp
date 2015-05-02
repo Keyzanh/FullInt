@@ -23,6 +23,12 @@ std::string FullInt::get() const {
 
 }
 
+bool FullInt::set( FullInt nbr ) {
+
+    return set( nbr.get() );
+
+}
+
 bool FullInt::set( std::string nbr ) {
 
     int const nbrSize = nbr.size();
@@ -43,6 +49,12 @@ bool FullInt::set( unsigned long int nbr ) {
     std::string nbStr = std::to_string( nbr );
     
     return set( nbStr );
+
+}
+
+bool FullInt::add( FullInt nbr ) {
+    
+    return add( nbStr.get() );
 
 }
 

@@ -54,7 +54,7 @@ bool FullInt::set( unsigned long int nbr ) {
 
 bool FullInt::add( FullInt nbr ) {
     
-    return add( nbStr.get() );
+    return add( nbr.get() );
 
 }
 
@@ -110,6 +110,25 @@ bool FullInt::add( unsigned long int nbr ) {
     std::string nbStr = std::to_string( nbr );
     
     return add( nbStr );
+
+}
+
+bool FullInt::isEqualTo( FullInt nbr ) {
+
+    return m_number == nbr.get();
+
+}
+
+bool FullInt::isEqualTo( std::string nbr ) {
+
+    return m_number == nbr;
+
+}
+
+bool FullInt::isEqualTo( unsigned long int nbr ) {
+
+    std::string nbStr = std::to_string( nbr );
+    return m_number == nbStr;
 
 }
 

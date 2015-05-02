@@ -98,6 +98,33 @@ public:
     bool add( unsigned long int nbr );
     
     /**
+     * Test if the two numbers are equals
+     *
+     * @param FullInt   The other number to compare with
+     *
+     * @return bool
+     */
+    bool isEqualTo( FullInt nbr );
+    
+    /**
+     * Test if the two numbers are equals
+     *
+     * @param string   The other number to compare with
+     *
+     * @return bool
+     */
+    bool isEqualTo( std::string nbr );
+    
+    /**
+     * Test if the two numbers are equals
+     *
+     * @param unsigned long int   The other number to compare with
+     *
+     * @return bool
+     */
+    bool isEqualTo( unsigned long int nbr );
+    
+    /**
      * Return the number of digits of the number
      *
      * @return int The number of digits of the number

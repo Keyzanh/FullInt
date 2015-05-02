@@ -125,6 +125,114 @@ public:
     bool isEqualTo( unsigned long int nbr ) const;
     
     /**
+     * Test if the number is inferior to the given one
+     *
+     * @param FullInt   The other number to compare with
+     *
+     * @return bool
+     */
+    bool isInferiorTo( FullInt nbr ) const;
+    
+    /**
+     * Test if the number is inferior to the given one
+     *
+     * @param string   The other number to compare with
+     *
+     * @return bool
+     */
+    bool isInferiorTo( std::string nbr ) const;
+    
+    /**
+     * Test if the number is inferior to the given one
+     *
+     * @param unsigned long int   The other number to compare with
+     *
+     * @return bool
+     */
+    bool isInferiorTo( unsigned long int nbr ) const;
+    
+    /**
+     * Test if the number is inferior or equal to the given one
+     *
+     * @param FullInt   The other number to compare with
+     *
+     * @return bool
+     */
+    bool isInferiorOrEqualTo( FullInt nbr ) const;
+    
+    /**
+     * Test if the number is inferior or equal to the given one
+     *
+     * @param string   The other number to compare with
+     *
+     * @return bool
+     */
+    bool isInferiorOrEqualTo( std::string nbr ) const;
+    
+    /**
+     * Test if the number is inferior or equal to the given one
+     *
+     * @param unsigned long int   The other number to compare with
+     *
+     * @return bool
+     */
+    bool isInferiorOrEqualTo( unsigned long int nbr ) const;
+    
+    /**
+     * Test if the number is superior to the given one
+     *
+     * @param FullInt   The other number to compare with
+     *
+     * @return bool
+     */
+    bool isSuperiorTo( FullInt nbr ) const;
+    
+    /**
+     * Test if the number is superior to the given one
+     *
+     * @param string   The other number to compare with
+     *
+     * @return bool
+     */
+    bool isSuperiorTo( std::string nbr ) const;
+    
+    /**
+     * Test if the number is superior to the given one
+     *
+     * @param unsigned long int   The other number to compare with
+     *
+     * @return bool
+     */
+    bool isSuperiorTo( unsigned long int nbr ) const;
+    
+    /**
+     * Test if the number is superior or equal to the given one
+     *
+     * @param FullInt   The other number to compare with
+     *
+     * @return bool
+     */
+    bool isSuperiorOrEqualTo( FullInt nbr ) const;
+    
+    /**
+     * Test if the number is superior or equal to the given one
+     *
+     * @param string   The other number to compare with
+     *
+     * @return bool
+     */
+    bool isSuperiorOrEqualTo( std::string nbr ) const;
+    
+    /**
+     * Test if the number is superior or equal to the given one
+     *
+     * @param unsigned long int   The other number to compare with
+     *
+     * @return bool
+     */
+    bool isSuperiorOrEqualTo( unsigned long int nbr ) const;
+    
+    /**
      * Return the number of digits of the number
      *
      * @return int The number of digits of the number
@@ -178,6 +286,38 @@ bool operator==( FullInt const& nb1, FullInt const& nb2 );
  * @param FullInt
  */
 bool operator!=( FullInt const& nb1, FullInt const& nb2 );
+
+/**
+ * Overload for the operator <
+ *
+ * @param FullInt
+ * @param FullInt
+ */
+bool operator<( FullInt const& nb1, FullInt const& nb2 );
+
+/**
+ * Overload for the operator <=
+ *
+ * @param FullInt
+ * @param FullInt
+ */
+bool operator<=( FullInt const& nb1, FullInt const& nb2 );
+
+/**
+ * Overload for the operator >
+ *
+ * @param FullInt
+ * @param FullInt
+ */
+bool operator>( FullInt const& nb1, FullInt const& nb2 );
+
+/**
+ * Overload for the operator >=
+ *
+ * @param FullInt
+ * @param FullInt
+ */
+bool operator>=( FullInt const& nb1, FullInt const& nb2 );
 
 /**
  * Overload for the operator +

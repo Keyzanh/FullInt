@@ -104,7 +104,7 @@ public:
      *
      * @return bool
      */
-    bool isEqualTo( FullInt nbr );
+    bool isEqualTo( FullInt nbr ) const;
     
     /**
      * Test if the two numbers are equals
@@ -113,7 +113,7 @@ public:
      *
      * @return bool
      */
-    bool isEqualTo( std::string nbr );
+    bool isEqualTo( std::string nbr ) const;
     
     /**
      * Test if the two numbers are equals
@@ -122,7 +122,7 @@ public:
      *
      * @return bool
      */
-    bool isEqualTo( unsigned long int nbr );
+    bool isEqualTo( unsigned long int nbr ) const;
     
     /**
      * Return the number of digits of the number
@@ -162,6 +162,22 @@ private:
     std::string m_number;
 
 };
+
+/**
+ * Overload for the operator ==
+ *
+ * @param FullInt
+ * @param FullInt
+ */
+bool operator==( FullInt const& nb1, FullInt const& nb2 );
+
+/**
+ * Overload for the operator !=
+ *
+ * @param FullInt
+ * @param FullInt
+ */
+bool operator!=( FullInt const& nb1, FullInt const& nb2 );
 
 /**
  * Overload for the operator +

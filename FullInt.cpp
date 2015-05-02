@@ -113,19 +113,19 @@ bool FullInt::add( unsigned long int nbr ) {
 
 }
 
-bool FullInt::isEqualTo( FullInt nbr ) {
+bool FullInt::isEqualTo( FullInt nbr ) const {
 
     return m_number == nbr.get();
 
 }
 
-bool FullInt::isEqualTo( std::string nbr ) {
+bool FullInt::isEqualTo( std::string nbr ) const {
 
     return m_number == nbr;
 
 }
 
-bool FullInt::isEqualTo( unsigned long int nbr ) {
+bool FullInt::isEqualTo( unsigned long int nbr ) const {
 
     std::string nbStr = std::to_string( nbr );
     return m_number == nbStr;
@@ -153,6 +153,18 @@ void FullInt::operator+=( std::string const& nb ) {
 void FullInt::operator+=( unsigned long int const& nb ) {
 
     add( nb );
+
+}
+
+bool operator==( FullInt const& nb1, FullInt const& nb2 ) {
+
+    return nb1.isEqualTo( nb2 );
+
+}
+
+bool operator!=( FullInt const& nb1, FullInt const& nb2 ) {
+
+    return !nb1.isEqualTo( nb2 );
 
 }
 

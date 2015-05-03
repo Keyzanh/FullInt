@@ -34,7 +34,7 @@ public:
     /**
      * Destructor
      */
-    ~FullInt();
+    virtual ~FullInt();
     
     /**
      * Get the number  in a string

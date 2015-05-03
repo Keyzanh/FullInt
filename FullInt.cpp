@@ -1,7 +1,9 @@
 #include "FullInt.h"
 #include <iostream>
 
-FullInt::FullInt() { set( "0" ); }
+FullInt::FullInt() :
+m_number( "0" )
+{}
 
 FullInt::FullInt( std::string nbr )
 {
@@ -17,7 +19,8 @@ FullInt::FullInt( unsigned long int nbr )
     
 }
 
-FullInt::~FullInt() {}
+FullInt::~FullInt()
+{}
 
 std::string FullInt::get() const
 {

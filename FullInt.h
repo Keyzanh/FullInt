@@ -2,6 +2,7 @@
 #define FULLINT_H
 
 #include <string>
+#include <ostream>
 
 /**
  * @class FullInt
@@ -358,5 +359,15 @@ FullInt operator+( FullInt const& nb1, unsigned long int const& nb2 );
  * @param FullInt
  */
 FullInt operator+( unsigned long int const& nb1, FullInt const& nb2 );
+
+/**
+ * Overload for the operator <<
+ *
+ * @param ostream   The stream that whill receive datas
+ * @param FullInt
+ *
+ * @return ostream
+ */
+std::ostream& operator<<( std::ostream& stream, FullInt const& nb );
 
 #endif

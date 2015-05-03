@@ -1,5 +1,4 @@
 #include "FullInt.h"
-#include <iostream>
 
 FullInt::FullInt() :
 m_number( "0" )
@@ -346,5 +345,13 @@ FullInt operator+( unsigned long int const& nb1, FullInt const& nb2 )
     FullInt result( nb2 );
     result += nb1;
     return result;
+
+}
+
+std::ostream& operator<<( std::ostream& stream, FullInt const& nb )
+{
+
+    stream << nb.get();
+    return stream;
 
 }

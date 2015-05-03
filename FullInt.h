@@ -51,7 +51,7 @@ public:
      *
      * @return bool True if success, false otherwise
      */
-    bool set( FullInt nbr );
+    bool set( FullInt const& nbr );
     
     /**
      * Set the number to the given value
@@ -60,7 +60,7 @@ public:
      *
      * @return bool True if success, false otherwise
      */
-    bool set( std::string nbr );
+    bool set( std::string const& nbr );
     
     /**
      * Set the number to given value
@@ -69,7 +69,7 @@ public:
      *
      * @return bool True if success, false otherwise
      */
-    bool set( unsigned long int nbr );
+    bool set( unsigned long int const& nbr );
     
     /**
      * Add a value to the number (sum operation)
@@ -78,7 +78,7 @@ public:
      *
      * @return bool True if success, false otherwise
      */
-    bool add( FullInt nbr );
+    bool add( FullInt const& nbr );
     
     /**
      * Add a value to the number (sum operation)
@@ -87,16 +87,43 @@ public:
      *
      * @return bool True if success, false otherwise
      */
-    bool add( std::string nbr );
+    bool add( std::string const& nbr );
     
     /**
      * Add a value to the number (sum operation)
      *
-     * @param unsigned long int    The number to add (sum)
+     * @param unsigned long int    The number to add (+)
      *
      * @return bool True if success, false otherwise
      */
-    bool add( unsigned long int nbr );
+    bool add( unsigned long int const& nbr );
+    
+    /**
+     * Add a value to the number (sum operation)
+     *
+     * @param string    The number to subtract (-)
+     *
+     * @return bool True if success, false otherwise
+     */
+    bool subtract( FullInt const& nbr );
+    
+    /**
+     * Add a value to the number (sum operation)
+     *
+     * @param FullInt    The number to subtract (-)
+     *
+     * @return bool True if success, false otherwise
+     */
+    bool subtract( std::string const& nbr );
+    
+    /**
+     * Add a value to the number (sum operation)
+     *
+     * @param unsigned long int    The number to subtract (-)
+     *
+     * @return bool True if success, false otherwise
+     */
+    bool subtract( unsigned long int const& nbr );
     
     /**
      * Test if the two numbers are equals
@@ -260,8 +287,39 @@ public:
      * @param unsigned long int
      */
     void operator+=( unsigned long int const& nb );
+    
+    /**
+     * Overload for the operator -=
+     *
+     * @param FullInt
+     */
+    void operator-=( FullInt const& nb );
+    
+    /**
+     * Overload for the operator -=
+     *
+     * @param string
+     */
+    void operator-=( std::string const& nb );
+    
+    /**
+     * Overload for the operator -=
+     *
+     * @param unsigned long int
+     */
+    void operator-=( unsigned long int const& nb );
 
 private:
+
+    /**
+     * Check if the given string is a valid int.
+     * Valids int are integers >= 0
+     *
+     * @param string
+     *
+     * @return bool
+     */
+    bool isValid( std::string nbr ) const;
 
     /**
      * The number in string format
@@ -359,6 +417,46 @@ FullInt operator+( FullInt const& nb1, unsigned long int const& nb2 );
  * @param FullInt
  */
 FullInt operator+( unsigned long int const& nb1, FullInt const& nb2 );
+
+/**
+ * Overload for the operator -
+ *
+ * @param FullInt
+ * @param FullInt
+ */
+FullInt operator-( FullInt const& nb1, FullInt const& nb2 );
+
+/**
+ * Overload for the operator -
+ *
+ * @param FullInt
+ * @param string
+ */
+FullInt operator-( FullInt const& nb1, std::string const& nb2 );
+
+/**
+ * Overload for the operator -
+ *
+ * @param string
+ * @param FullInt
+ */
+FullInt operator-( std::string const& nb1, FullInt const& nb2 );
+
+/**
+ * Overload for the operator -
+ *
+ * @param FullInt
+ * @param unsigned long int
+ */
+FullInt operator-( FullInt const& nb1, unsigned long int const& nb2 );
+
+/**
+ * Overload for the operator -
+ *
+ * @param unsigned long int
+ * @param FullInt
+ */
+FullInt operator-( unsigned long int const& nb1, FullInt const& nb2 );
 
 /**
  * Overload for the operator <<

@@ -28,17 +28,19 @@ std::string FullInt::get() const
     
 }
 
-bool FullInt::set( FullInt nbr )
+bool FullInt::set( FullInt const& nbr )
 {
 
     return set( nbr.get() );
     
 }
 
-bool FullInt::set( std::string nbr )
+bool FullInt::set( std::string const& nbr )
 {
 
     int const nbrSize = nbr.size();
+    
+    if( !isValid( nbr ) ) return false;
     
     for( int i = 0; i < nbrSize; i++ ) // Check if all characters are a numbers
     {
@@ -49,7 +51,7 @@ bool FullInt::set( std::string nbr )
     
 }
 
-bool FullInt::set( unsigned long int nbr )
+bool FullInt::set( unsigned long int const& nbr )
 {
 
     std::string nbStr = std::to_string( nbr );    
@@ -57,32 +59,33 @@ bool FullInt::set( unsigned long int nbr )
     
 }
 
-bool FullInt::add( FullInt nbr )
+bool FullInt::add( FullInt const& nbr )
 {
     
     return add( nbr.get() );
 
 }
 
-bool FullInt::add( std::string nbr )
+bool FullInt::add( std::string const& nbr )
 {
 
     unsigned int const nbrSize = nbr.size();
     unsigned int numberSize = m_number.size(), offset;
     unsigned short int digit1, digit2, digitSum,  restraint;
+    
+    if( !isValid( nbr ) ) return false;
         
     for( unsigned int i = 0; i < nbrSize; i++ )
     {    
         offset = i; // Will differ from i if restraints
         restraint = 0;    
-        do {        
+        do
+        {        
             // Choose if digit2 should be nbr digit or restraint digit
             if( restraint ) {
                 digit2 = 1;
                 offset++;
-            } else {
-                digit2 = nbr[ nbrSize - i - 1 ] - '0';
-            }
+            } else digit2 = nbr[ nbrSize - i - 1 ] - '0';
         
             // Get m_number digit or create it if needed
             if( offset == numberSize ) {
@@ -107,12 +110,65 @@ bool FullInt::add( std::string nbr )
 
 }
 
-bool FullInt::add( unsigned long int nbr )
+bool FullInt::add( unsigned long int const& nbr )
 {
 
     std::string nbStr = std::to_string( nbr );    
     return add( nbStr );
 
+}
+
+bool FullInt::subtract( FullInt const& nbr )
+{
+    return subtract( nbr.get() );
+}
+
+bool FullInt::subtract( std::string const& nbr )
+{
+
+    unsigned int const nbrSize = nbr.size();
+    unsigned int numberSize = m_number.size(), offset;
+    unsigned short int restraint, digitSubtract, digit1, digit2;
+    
+    if( !isValid( nbr ) || numberSize < nbrSize ) return false;
+    
+    for( unsigned int i = 0; i < nbrSize; i++ )
+    {
+        offset = i;
+        restraint = 0;
+        
+        do
+        {
+            if( restraint ) {
+                digit2 = 1;
+                offset++;
+            } else digit2 = nbr[ nbrSize - i - 1 ] - '0';
+            digit1 = m_number[ numberSize - offset - 1 ] - '0';
+            if( digit1 < digit2 ) {
+                digitSubtract = 10 + digit1 - digit2;
+                restraint = 1;
+            } else {
+                digitSubtract = digit1 - digit2;
+                restraint = 0;
+            }
+            if( digitSubtract == 0 && offset == numberSize - 1 ) {
+                // If first digit is 0, remove it
+                m_number = m_number.substr( 1, std::string::npos );
+                numberSize = m_number.size();
+            } else {
+                m_number[ numberSize - offset - 1 ] = digitSubtract + '0';
+            }
+        } while( restraint );
+        
+    }
+    return true;
+
+}
+
+bool FullInt::subtract( unsigned long int const& nbr )
+{
+    std::string nbStr = std::to_string( nbr );
+    return subtract( nbStr );
 }
 
 bool FullInt::isEqualTo( FullInt nbr ) const
@@ -148,6 +204,8 @@ bool FullInt::isInferiorTo( std::string nbr ) const
 {
 
     int const numberSize = m_number.size();
+    
+    if( !isValid( nbr ) ) return false;
     
     if( numberSize < nbr.size() )
         return true;
@@ -240,10 +298,23 @@ int FullInt::nbDigits() {
 
 }
 
+bool FullInt::isValid( std::string nbr ) const
+{
+
+    unsigned int const nbrSize = nbr.size();
+    for( unsigned int i = 0; i < nbrSize; i++ )
+    {
+        if( nbr[ i ] - '0' < 0 || nbr[ i ] - '0' > 9 )
+            return false;
+    }
+    return true;
+
+}
+
 void FullInt::operator+=( FullInt const& nb )
 {
 
-    add( nb.get() );
+    add( nb );
 
 }
 
@@ -258,6 +329,27 @@ void FullInt::operator+=( unsigned long int const& nb )
 {
 
     add( nb );
+
+}
+
+void FullInt::operator-=( FullInt const& nb )
+{
+
+    subtract( nb );
+
+}
+
+void FullInt::operator-=( std::string const& nb )
+{
+
+    subtract( nb );
+
+}
+
+void FullInt::operator-=( unsigned long int const& nb )
+{
+
+    subtract( nb );
 
 }
 
@@ -344,6 +436,51 @@ FullInt operator+( unsigned long int const& nb1, FullInt const& nb2 )
 
     FullInt result( nb2 );
     result += nb1;
+    return result;
+
+}
+
+FullInt operator-( FullInt const& nb1, FullInt const& nb2 )
+{
+
+    FullInt result( nb1 );
+    result -= nb2;
+    return result;
+
+}
+
+FullInt operator-( FullInt const& nb1, std::string const& nb2 )
+{
+
+    FullInt result( nb1 );
+    result -= nb2;
+    return result;
+
+}
+
+FullInt operator-( std::string const& nb1, FullInt const& nb2 )
+{
+
+    FullInt result( nb2 );
+    result -= nb1;
+    return result;
+
+}
+
+FullInt operator-( FullInt const& nb1, unsigned long int const& nb2 )
+{
+
+    FullInt result( nb1 );
+    result -= nb2;
+    return result;
+
+}
+
+FullInt operator-( unsigned long int const& nb1, FullInt const& nb2 )
+{
+
+    FullInt result( nb2 );
+    result -= nb1;
     return result;
 
 }

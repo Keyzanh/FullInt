@@ -355,3 +355,13 @@ std::ostream& operator<<( std::ostream& stream, FullInt const& nb )
     return stream;
 
 }
+
+std::istream& operator>>( std::istream& stream, FullInt& nb )
+{
+
+    std::string content;
+    stream >> content;
+    nb.set( content );
+    return stream;
+
+}

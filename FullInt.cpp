@@ -151,16 +151,21 @@ bool FullInt::subtract( std::string const& nbr )
                 digitSubtract = digit1 - digit2;
                 restraint = 0;
             }
+            /*
             if( digitSubtract == 0 && offset == numberSize - 1 ) {
                 // If first digit is 0, remove it
                 m_number = m_number.substr( 1, std::string::npos );
                 numberSize = m_number.size();
-            } else {
+            } else {*/
                 m_number[ numberSize - offset - 1 ] = digitSubtract + '0';
-            }
+            //}
         } while( restraint );
         
     }
+    
+    // Delete the eventual 0 at the begining
+    while( m_number[ 0 ] == '0' ) m_number.erase( 0, 1 );
+    
     return true;
 
 }
